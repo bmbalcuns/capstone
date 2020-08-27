@@ -58,5 +58,6 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 - Implement editing of previously added beverages: 14 September
 - Implement flagging of beverages and flagged list: 14 September*
 - Styling until completion: 18 September*
+
 If there is additional time, the following task(s) should be completed.
 - Listing by #/a-z/&
