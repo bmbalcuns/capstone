@@ -31,11 +31,12 @@ As a logged-in user, I want to be able to add new beverages, so I can share ones
 - Create "edit" functionality and allow the user to edit (only) new beverages that they have added.
 - Include new beverages in general and logged-in user lists and searches.
 
-As the administrator, I want to ensure that this app provides a running list of various types of beverages only, because that is its sole purpose.
+As the administrator, I want to ensure that this application provides a running list of various types of beverages only, because that is its sole purpose.
 - Create "flag"/"report" functionality to allow general and logged-in users to bring list items up for review (do not allow "remove" functionality).
 - Review list items and return/edit/remove them as necessary.
 
 ## Data Model
+The data that I will need to store for my application includes: drinks (each of which will also include: image, drink name, category, alcohol type, ingredients, measurements, and instructions), users, favorited drinks, hidden drinks, and comments.
 
 ## Schedule
 ### Milestones
