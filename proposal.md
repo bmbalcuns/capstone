@@ -11,6 +11,7 @@ This project is pulling primarily from TheCocktailDB.com API: https://www.thecoc
 ## Features
 ### User stories
 As a general user, I want to be able to get and search for a limited list of beverages, because I want to find something new without logging in.
+- Link/set up API to generate beveage lists.
 - Display ten random beverages when the page is opened.
 - Filter through all beverages, according to the general user's search, and display ten results.
 - Provide the general user with the option to create an account.
@@ -28,10 +29,10 @@ As a logged-in user, I want to be able to favorite and/or hide beverages of my c
 
 As a logged-in user, I want to be able to add new beverages, so I can share ones that I know with others.
 - Allow the user to add new beverages and all relevant information (required) to the full list of beverages.
-- Create "edit" functionality and allow the user to edit (only) new beverages that they have added.
+- Create "edit" functionality and allow the user to edit (only) new beverages that they have previously added.
 - Include new beverages in general and logged-in user lists and searches.
 
-As the administrator, I want to ensure that this application provides a running list of various types of beverages only, because that is its sole purpose.
+As the administrator, I want to ensure that this application provides a running list of various types of beverages ONLY, because that is its sole purpose.
 - Create "flag"/"report" functionality to allow general and logged-in users to bring list items up for review (do not allow "remove" functionality).
 - Review list items and return/edit/remove them as necessary.
 
@@ -39,4 +40,23 @@ As the administrator, I want to ensure that this application provides a running 
 The data that I will need to store for my application includes: drinks (each of which will also include: image, drink name, category, alcohol type, ingredients, measurements, and instructions), users, favorited drinks, hidden drinks, and comments.
 
 ## Schedule
-### Milestones
+Begin Capstone: 26 August 2020
+Present Capstone: 18 September 2020
+
+### Milestones/Minimal Viable Products*
+Tasks will be completed in the following order, so long as time allows. If I am unable to complete all tasks, I will stop at an appropriate MVP stage (maked by an asterisk), and any remaining tasks will be moved to additional/future tasks. All dates are tentative and assumed COB.
+- Receive approval for Capstone proposal: 27 August
+- Link/set up API that stores all beverages: 2 September
+- Set up models/views: 3 September
+- Implement search capabilities: 3 September
+- Limit general user searches: 8 September*
+- Create sign up/log in/log out functions and users: 9 September
+- Implement favoriting/hiding and favorites list/hidden list: 10 September*
+- Filter user's hidden list from all displayed lists/results: 10 September
+- Implement commenting on items: 11 September*
+- Implement adding of new beverages/updating API: 14 September
+- Implement editing of previously added beverages: 14 September
+- Implement flagging of beverages and flagged list: 14 September*
+- Styling until completion: 18 September*
+If there is additional time, the following task(s) should be completed.
+- Listing by #/a-z/&
