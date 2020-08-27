@@ -39,6 +39,10 @@ As the administrator, I want to ensure that this application provides a running 
 ## Data Model
 The data that I will need to store for my application includes: drinks (each of which will also include: image, drink name, category, alcohol type, ingredients, measurements, and instructions), users, favorited drinks, hidden drinks, and comments.
 
+Many-to-many relationship between beverages and ingredients.
+Many-to-one relationship between users and beverages.
+Many-to-one relationshp between users and their respective favorited/hidden lists.
+
 ## Schedule
 Begin Capstone: 26 August 2020
 Present Capstone: 18 September 2020
