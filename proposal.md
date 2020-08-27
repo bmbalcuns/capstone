@@ -10,8 +10,6 @@ This project is pulling primarily from TheCocktailDB.com API: https://www.thecoc
 
 ## Features
 ### User stories
-#### Specific Feature
-#### Tasks
 
 ## Data Model
 
