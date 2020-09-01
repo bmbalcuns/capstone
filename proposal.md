@@ -6,7 +6,7 @@
 ## Overview
 Knock It Back aims to provide an updatable database for users to search/find alcoholic and non-alcoholic beverages. Results will be rendered by a category selection (alcoholic versus non-alcoholic), alcohol type (gin, rum, vodka, etc.), and/or keyword search (part of a name or an ingredient). Beverage listings will include relevent information such as the name, a photo if available, ingredients and measurements, and directions on how to make.
 
-This project is pulling from the CocktailDB API (https://www.thecocktaildb.com/api.php), as well as the Cocktails API (https://cocktailsapi.xyz/).
+This project is pulling from the Cocktails API (https://cocktailsapi.xyz/).
 
 ## Features
 ### User stories
@@ -67,4 +67,4 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 - Styling until completion: 18 September*
 
 If there is additional time, the following task(s) should be completed.
-- Listing by #/a-z/&
+- Listing by 123/a-z/$%&
