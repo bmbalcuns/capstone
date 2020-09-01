@@ -47,6 +47,7 @@ Many-to-one relationshp between users and their respective favorited/hidden list
 
 ## Schedule
 Begin Capstone: 26 August 2020
+
 Present Capstone: 18 September 2020
 
 ### Milestones/Minimal Viable Products*
