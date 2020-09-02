@@ -4,19 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Knock It Back Homepage HTML</title>
-        <link rel="stylesheet" href="capstonestyle.css">
+        <link rel="stylesheet" href="/static/capstonestyle.css">
     </head>
     <body>
         <h1>Knock It Back</h1>
+        <h3>Welcome, Guest!</h3>
+        <h4>See below for a randomized list of drinks, or enter your search parameters.</h4>
         <div id="app">
             <label for="searchType">Choose an alcohol type:</label>
             <select name="searchType" id="searchType" v-model="searchType">
                 <option value="initial" disabled>select</option>
                 <option value="any">any</option>
-                <option value="Gin">gin</option>
-                <option value="Rum">rum</option>
-                <option value="Vodka">vodka</option>
-                <option value="none">none</option>
+                <option value="beer">beer</option>
+                <option value="gin">gin</option>
+                <option value="rum">rum</option>
+                <option value="tequila">tequila</option>
+                <option value="vodka">vodka</option>
+                <option value="whiskey">whiskey</option>
             </select> 
             <button @click="listDrinksByType">Get drink suggestions</button><br>
             <label for="searchTerm">Search by keyword:</label>
@@ -33,7 +37,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="secrets.js"></script>
-        <script src="lab14app.js"></script>
+        <script src="/static/vues.js"></script>
     </body>
 </html>
