@@ -11,7 +11,7 @@ This project is pulling from the Cocktails API (https://cocktailsapi.xyz/).
 ## Features
 ### User stories
 As a general user, I want to be able to get and search for a limited list of beverages, because I want to find something new without logging in.
-- Link/set up API(s) to generate beverage lists.
+- Link/set up API to generate beverage lists.
 - Display ten random beverages when the page is opened.
 - Filter through all beverages, according to the general user's search, and display ten results.
 - Provide the general user with the option to create an account.
@@ -53,7 +53,7 @@ Present Capstone: 18 September 2020
 ### Milestones/Minimal Viable Products*
 Tasks will be completed in the following order, so long as time allows. If I am unable to complete all tasks, I will stop at an appropriate MVP stage (maked by an asterisk), and any remaining tasks will be moved to additional/future tasks. All dates are tentative and assumed COB.
 - Receive approval for Capstone proposal: 27 August
-- Link/set up API(s) that store(s) all beverages: 2 September
+- Link/set up API that stores all beverages: 2 September
 - Set up models/views: 3 September
 - Implement search capabilities: 3 September
 - Limit general user searches: 8 September*
