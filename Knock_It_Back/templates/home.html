@@ -12,7 +12,7 @@
         <h4>You have limited access. For more results, please create an account or log in.</h4>
         <a href="url">Create an Account</a>
         <a href="url">Member Login</a>
-        <h4>See below for a randomized list of drinks, or enter your search parameters (one search item at a time).</h4>
+        <h4>Below is a randomized list of drinks. For more specific results, please enter search parameters (one search item at a time).</h4>
         <div id="app">
             <label for="searchType">Choose an alcohol type:</label>
             <select name="searchType" id="searchType" v-model="searchType">
@@ -26,11 +26,11 @@
                 <option value="tequila">tequila</option>
                 <option value="vodka">vodka</option>
                 <option value="whiskey">whiskey</option>
-            </select> 
+            </select>
             <button @click="listDrinksByType">Get drink suggestions</button><br>
-            <label for="searchTerm">Search by keyword:</label>
-            <input type="text" v-model="searchTerm" placeholder="type keyword here"> 
-            <button @click="listDrinksByTerm">Get drink suggestions</button><br><br>
+            <label for="searchTerm">Search by ingredient:</label>
+            <input type="text" v-model="searchTerm" placeholder="type ingredient here"> 
+            <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
             <div>
                 <drink
                     v-for="drink in drinks"
