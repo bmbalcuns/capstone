@@ -43,7 +43,7 @@ let vm = new Vue({
             if (this.searchType === "any") {
                 url = `http://api-cocktails.herokuapp.com/api/v1/cocktails`
             } else {
-                url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients=${this.searchType}`
+                url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchType}`
             }
             axios({
                 method: "get",
@@ -59,7 +59,7 @@ let vm = new Vue({
             this.searchTerm = ''
         },
         listDrinksByTerm: function () {
-            let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients=${this.searchTerm}`
+            let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}`
             axios({
                 method: "get",
                 url: url,

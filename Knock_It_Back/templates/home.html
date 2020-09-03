@@ -9,14 +9,17 @@
     <body>
         <h1>Knock It Back</h1>
         <h3>Welcome, Guest!</h3>
-        <h4>See below for a randomized list of drinks, or enter your search parameters.</h4>
+        <h4>You have limited access. For more results, please create and account.</h4>
+        <h4>See below for a randomized list of drinks, or enter your search parameters (one search item at a time).</h4>
         <div id="app">
             <label for="searchType">Choose an alcohol type:</label>
             <select name="searchType" id="searchType" v-model="searchType">
                 <option value="initial" disabled>select</option>
                 <option value="any">any</option>
                 <option value="beer">beer</option>
+                <option value="brandy">brandy</option>
                 <option value="gin">gin</option>
+                <option value="liqueur">liqueur</option>
                 <option value="rum">rum</option>
                 <option value="tequila">tequila</option>
                 <option value="vodka">vodka</option>
