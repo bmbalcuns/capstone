@@ -8,11 +8,21 @@
     </head>
     <body>
         <h1>Knock It Back</h1>
+
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <h3>Welcome back, {{ user.username }}!</h3>
+        <a href="{% url 'kib_app:home' %}">Homepage</a> 
+        <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
+        <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
+        <a href="{% url 'logout' %}">Log Out of Account</a>
+        {% else %}
         <h3>Welcome, Guest!</h3>
         <h4>You have limited access. For more results, please create an account or log in.</h4>
-        <a href="url">Create an Account</a>
-        <a href="url">Member Login</a>
+        <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
         <h4>Below is a randomized list of drinks. For more specific results, please enter search parameters (one search item at a time).</h4>
+        {% endif %}
+        
         <div id="app">
             <label for="searchType">Choose an alcohol type:</label>
             <select name="searchType" id="searchType" v-model="searchType">
