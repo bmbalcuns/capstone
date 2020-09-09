@@ -88,6 +88,8 @@ let vm = new Vue({
             let url = '/api/v1/drinks/'
             let formdata = new FormData()
             formdata.append('image_thumb_url', drink.image_thumb_url)
+            console.log(drink.image_thumb_url)
+            console.log(formdata)
             axios({
                 method: "post",
                 url: url,
