@@ -46,6 +46,8 @@
                     v-for="drink in drinks"
                     v-bind:drink="drink"
                     v-bind:key="drink.id"
+                    @favorite="favoriteDrink(drink)"
+                    @hide="hideDrink(drink)"
                 ></drink>
             <!-- <button @click="nextPage" v-if="loadMoreButton">Load more...</button> -->
             </div>

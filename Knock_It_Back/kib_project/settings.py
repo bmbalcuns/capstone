@@ -132,7 +132,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
-LOGIN_REDIRECT_URL = 'drinks:home'
-LOGOUT_REDIRECT_URL = 'drinks:home'
+LOGIN_REDIRECT_URL = 'kib_app:home'
+LOGOUT_REDIRECT_URL = 'kib_app:home'
 
 LOGIN_URL = 'login'
