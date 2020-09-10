@@ -58,12 +58,10 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 - Implement search capabilities: 3 September
 - Limit general user searches: 8 September*
 - Create sign up/log in/log out functions and users: 9 September
-- Implement favoriting/hiding and favorites list/hidden list: 10 September*
-- Filter user's hidden list from all displayed lists/results: 10 September
-- Implement commenting on items: 11 September*
-- Implement adding of new beverages/updating API: 14 September
-- Implement editing of previously added beverages: 14 September
-- Implement flagging of beverages and flagged list: 14 September*
+- Implement favoriting/hiding and favorites list/hidden list: 10 September
+- Filter user's hidden list from all displayed lists/results: 10 September*
+- Implement commenting on items: 14 September
+- Set up "load more"/pages: 14 September*
 - Styling until completion: 18 September*
 
 If there is additional time, the following task(s) should be completed.
