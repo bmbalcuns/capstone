@@ -21,9 +21,9 @@
         <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
         {% endif %}
 
-        <div>
+        <div id="app">
             <drink
-                v-for="drink in drinks"
+                v-for="drink in user.favorites_info"
                 v-bind:drink="drink"
                 v-bind:key="drink.id"
                 @unfavorite="unfavoriteDrink"
@@ -32,6 +32,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="/static/vues.js"></script>
+        <script src="/static/favorites.js"></script>
     </body>
 </html>

@@ -1,7 +1,8 @@
 from django.db import models
 
 class Drink(models.Model):
-    image_thumb_url = models.ImageField(null=True, blank=True)
+    # image_thumb_url = models.ImageField(null=True, blank=True)
+    image_thumb_url = models.URLField(null=True, blank=True)
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=5000)
     ingredients = models.CharField(max_length=1000)

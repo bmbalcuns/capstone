@@ -9,7 +9,6 @@ Vue.component('drink', {
             <ul>
                 <li v-for="drink in drink.ingredients">{{ drink }}</li>
             </ul>
-            Preparation: {{ drink.preparation }}<br><br>
             <button @click="$emit('favorite', drink)">Favorite</button>
             <button @click="$emit('hide', drink)">Hide</button>
         </p>
@@ -86,10 +85,6 @@ let vm = new Vue({
         },
         favoriteDrink: function (drink) {
             let url = '/api/v1/drinks/'
-            let formdata = new FormData()
-            formdata.append('image_thumb_url', drink.image_thumb_url)
-            console.log(drink.image_thumb_url)
-            console.log(formdata)
             axios({
                 method: "post",
                 url: url,
@@ -97,54 +92,37 @@ let vm = new Vue({
                     'X-CSRFToken': this.csrftoken,
                 },
                 data: {
-                    "image_thumb_url": null,
+                    "image_thumb_url": drink.image_thumb_url,
                     "name": drink.name,
                     "description": drink.description,
-                    "ingredients": `'${drink.ingredients}'`,
+                    "ingredients": `${drink.ingredients}`,
                     "favorite": this.user.id,
                     "hide": null
                 }
             }).then(response => {
                 console.log(response.data);
-                console.log(formdata);
-                axios({
-                    method: "patch",
-                    url: `/api/v1/drinks/${response.data.id}/`,
-                    headers: {
-                        'X-CSRFToken': this.csrftoken,
-                    },
-                    data: formdata
-                }).then(response => {
-                    console.log(response.data)
-                })
             })
         },
-        // unfavoriteDrink: function (id) {
-        //     let url = '/favorites/'
-        //     axios({
-        //         method: "get",
-        //         url: url,
-        //     }).then(response => {
-        //         console.log(response.data);
-        //         this.drinks = response.data
-        //     })
-        // },
-        // hideDrink: function (id) {
-        //     let url = ''
-        //     axios({
-        //         method: "patch",
-        //         url: url,
-        //     }).then(response => {
-        //         console.log(response.data);
-        //         this.drinks = response.data
-        //     })
-        // },
-        // unhideDrink: function (id) {
-            // let url = '/hidden/',
-            // axios({
-                
-            // })
-        // }
+        hideDrink: function (drink) {
+            let url = '/api/v1/drinks/'
+            axios({
+                method: "post",
+                url: url,
+                headers: {
+                    'X-CSRFToken': this.csrftoken,
+                },
+                data: {
+                    "image_thumb_url": drink.image_thumb_url,
+                    "name": drink.name,
+                    "description": drink.description,
+                    "ingredients": `${drink.ingredients}`,
+                    "favorite": null,
+                    "hide": this.user.id
+                }
+            }).then(response => {
+                console.log(response.data);
+            })
+        },
     },
     mounted: function () {
         this.csrftoken = document.querySelector('input[name=csrfmiddlewaretoken]').value

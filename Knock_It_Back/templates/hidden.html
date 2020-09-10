@@ -11,7 +11,7 @@
 
         {% csrf_token %}
         {% if user.is_authenticated %}
-        <h3>{{ user.username }}, here are the drinks you don't want to see!</h3>
+        <h3>{{ user.username }}, here are the drinks you don't want to see.</h3>
         <a href="{% url 'kib_app:home' %}">Homepage</a> 
         <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
         <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
@@ -21,9 +21,9 @@
         <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
         {% endif %}
 
-        <div>
+        <div id="app">
             <drink
-                v-for="drink in drinks"
+                v-for="drink in user.hidden_info"
                 v-bind:drink="drink"
                 v-bind:key="drink.id"
                 @favorite="favoriteDrink"
@@ -32,6 +32,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="/static/vues.js"></script>
+        <script src="/static/hidden.js"></script>
     </body>
 </html>
