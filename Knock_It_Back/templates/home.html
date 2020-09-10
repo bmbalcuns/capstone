@@ -43,9 +43,10 @@
             <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
             <div>
                 <drink
+                    :user="user"
                     v-for="drink in drinks"
-                    v-bind:drink="drink"
-                    v-bind:key="drink.id"
+                    :drink="drink"
+                    :key="drink.id"
                     @favorite="favoriteDrink(drink)"
                     @hide="hideDrink(drink)"
                 ></drink>

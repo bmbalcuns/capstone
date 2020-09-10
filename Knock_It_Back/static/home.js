@@ -1,7 +1,7 @@
 Vue.component('drink', {
-    props: ['drink'],
+    props: ['drink', 'user'],
     template: `
-        <p>
+        <div>
         <img :src="drink.image_thumb_url"><br>
             {{ drink.name }}<br><br>
             Description: {{ drink.description }}<br><br>
@@ -9,9 +9,10 @@ Vue.component('drink', {
             <ul>
                 <li v-for="drink in drink.ingredients">{{ drink }}</li>
             </ul>
-            <button @click="$emit('favorite', drink)">Favorite</button>
-            <button @click="$emit('hide', drink)">Hide</button>
-        </p>
+            <button v-if="user.id" @click="$emit('favorite', drink)">Favorite</button>
+            <button v-if="user.id" @click="$emit('hide', drink)">Hide</button>
+            <p v-if="!user.id">Please log in or create an account to favorite or hide drinks.</p>
+        </div>
         `
   })
 
@@ -62,8 +63,18 @@ let vm = new Vue({
                     Authorization: "Token token=cKsRpxkhpu7FhLVzjQE3nAtt"
                 }
             }).then(response => {
-                console.log(response.data);
-                this.drinks = response.data.slice(0, 10);
+                if (this.user.id) {
+                    this.drinks = response.data.filter(drink => {
+                        this.user.hidden_info.forEach(hidden => {
+                            if (hidden.name === drink.name) {
+                                return false
+                            }
+                        });
+                        return true
+                    })
+                }else {
+                    this.drinks = response.data.slice(0, 10)
+                }
             });
             this.searchType = 'initial';
             this.searchTerm = ''
@@ -78,7 +89,18 @@ let vm = new Vue({
                 }
             }).then(response => {
                 console.log(response.data);
-                this.drinks = response.data.slice(0, 10);
+                if (this.user.id) {
+                    this.drinks = response.data.filter(drink => {
+                        this.user.hidden_info.forEach(hidden => {
+                            if (hidden.name === drink.name) {
+                                return false
+                            }
+                        });
+                        return true
+                    })
+                }else {
+                    this.drinks = response.data.slice(0, 10)
+                }
             });
             this.searchType = 'initial';
             this.searchTerm = ''
