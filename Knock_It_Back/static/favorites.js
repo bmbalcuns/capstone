@@ -36,6 +36,18 @@ let vm = new Vue({
                 this.user = response.data
             })
         },
+        removeFavorite: function (drink) {
+                let url = `/api/v1/drinks/${drink.id}/`
+                axios({
+                    method: "delete",
+                    url: url,
+                    headers: {
+                        'X-CSRFToken': this.csrftoken,
+                    },
+                }).then(response => {
+                    this.getDrinks()
+                })
+        },
         unfavoriteDrink: function (drink) {
             let url = `/api/v1/drinks/${drink.id}/`
             axios({
@@ -66,6 +78,7 @@ let vm = new Vue({
                 }
             }).then(response => {
                 console.log(response.data);
+                this.removeFavorite(drink)
             })
         },
     },
