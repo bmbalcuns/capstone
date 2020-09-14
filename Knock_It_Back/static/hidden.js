@@ -19,9 +19,7 @@ let vm = new Vue({
     el: '#app',
     data: {
         user: '',
-        // page: 1,
         csrftoken: ''
-        // loadMoreButton: false
     },
     created: function () {
         this.getDrinks()

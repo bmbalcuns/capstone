@@ -12,6 +12,7 @@ Vue.component('drink', {
             <button v-if="user.id" @click="$emit('favorite', drink)">Favorite</button>
             <button v-if="user.id" @click="$emit('hide', drink)">Hide</button><br><br>
             <p v-if="!user.id">Please log in or create an account to favorite or hide drinks.</p><br><br>
+        <button v-if="loadMoreButton" @click="$emit('loadMore', page)">Load more...</button>
         </div>
         `
   })
@@ -23,11 +24,11 @@ let vm = new Vue({
         searchTerm: '',
         drinks: [],
         user: '',
-        // page: 1,
+        page: 1,
         activeTerm: '',
         activeType: '',
-        csrftoken: ''
-        // loadMoreButton: false
+        csrftoken: '',
+        loadMoreButton: false
     },
     created: function () {
         axios({
@@ -61,6 +62,8 @@ let vm = new Vue({
     methods: {
         listDrinksByType: function () {
             let url = ''
+            this.page = 1
+            this.loadMoreButton = true
             if (this.searchType === "any") {
                 url = `http://api-cocktails.herokuapp.com/api/v1/cocktails`
             } else {
@@ -91,6 +94,8 @@ let vm = new Vue({
         },
         listDrinksByTerm: function () {
             let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}`
+            this.page = 1
+            this.loadMoreButton = true
             axios({
                 method: "get",
                 url: url,
@@ -154,6 +159,19 @@ let vm = new Vue({
             }).then(response => {
                 console.log(response.data);
             })
+        },
+        nextPage: function () {
+            this.page ++
+            axios({
+                headers: {
+                    'X-CSRFToken': this.csrftoken,
+                },
+                method: "get",
+                // url: url I don't know what the url is - this.searchType/this.searchTerm
+            }).then(response => {
+                console.log(response.data);
+                this.data = response.data;
+            });
         },
     },
     mounted: function () {
