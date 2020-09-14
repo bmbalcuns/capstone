@@ -25,8 +25,7 @@ let vm = new Vue({
         drinks: [],
         user: '',
         page: 1,
-        activeTerm: '',
-        activeType: '',
+        active: '',
         csrftoken: '',
         loadMoreButton: false
     },
@@ -62,6 +61,7 @@ let vm = new Vue({
     methods: {
         listDrinksByType: function () {
             let url = ''
+            this.active = 'type'
             this.page = 1
             this.loadMoreButton = true
             if (this.searchType === "any") {
@@ -94,6 +94,7 @@ let vm = new Vue({
         },
         listDrinksByTerm: function () {
             let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}`
+            this.active = 'term'
             this.page = 1
             this.loadMoreButton = true
             axios({
@@ -161,13 +162,19 @@ let vm = new Vue({
             })
         },
         nextPage: function () {
+            // there is currently an error regarding loadMoreButton
+            if (this.active === "type") {
+                let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchType}&page=${this.page}`
+            } else {
+                let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}&page=${this.page}`
+            }
             this.page ++
             axios({
                 headers: {
                     'X-CSRFToken': this.csrftoken,
                 },
                 method: "get",
-                // url: url I don't know what the url is - this.searchType/this.searchTerm
+                url: url
             }).then(response => {
                 console.log(response.data);
                 this.data = response.data;
