@@ -62,4 +62,4 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 If there is additional time, the following task(s) should be completed.
 - Listing by 123/a-z/$%&
 - Implement ability to add new beverages and all relevant information (required) to the full list of beverages
-- Create "flag"/"report" functionality to allow general and logged-in users to bring list items up for review ("remove" functionality only for admin)
+- Create "flag"/"report" functionality ("remove" functionality only for admin)
