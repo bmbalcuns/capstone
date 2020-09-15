@@ -56,10 +56,10 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 - Filter user's hidden list from all displayed lists/results: 10 September*
 - Order favorites/hidden lists a-z: 14 September
 - Set up "load more"/pages: 14 September*
-- Implement user commenting on individual items: 14 September
 - Styling until completion: 18 September*
 
 If there is additional time, the following task(s) should be completed.
 - Listing by 123/a-z/$%&
+- Implement user commenting on individual items
 - Implement ability to add new beverages and all relevant information (required) to the full list of beverages
 - Create "flag"/"report" functionality ("remove" functionality only for admin)
