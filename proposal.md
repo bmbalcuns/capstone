@@ -27,14 +27,8 @@ As a logged-in user, I want to be able to favorite and/or hide beverages of my c
 - Filter user's hidden beverages from all displayed beverages and/or searches.
 - Allow the user to make notes/add comments to beverages.
 
-As a logged-in user, I want to be able to add new beverages, so I can share ones that I know with others.
-- Allow the user to add new beverages and all relevant information (required) to the full list of beverages.
-- Create "edit" functionality and allow the user to edit (only) new beverages that they have previously added.
-- Include new beverages in general and logged-in user lists and searches.
-
 As the administrator, I want to ensure that this application provides a running list of various types of beverages ONLY, because that is its sole purpose.
-- Create "flag"/"report" functionality to allow general and logged-in users to bring list items up for review (do not allow "remove" functionality).
-- Review list items and return/edit/remove them as necessary.
+- Monitor the API and edit requests as necessary.
 
 ## Data Model
 The data that I will need to store for my application includes: drinks (each of which will also include: image, drink name, category, alcohol type, ingredients, measurements, and instructions), users, favorited drinks, hidden drinks, and comments.
@@ -67,3 +61,5 @@ Tasks will be completed in the following order, so long as time allows. If I am 
 
 If there is additional time, the following task(s) should be completed.
 - Listing by 123/a-z/$%&
+- Implement ability to add new beverages and all relevant information (required) to the full list of beverages
+- Create "flag"/"report" functionality to allow general and logged-in users to bring list items up for review ("remove" functionality only for admin)
