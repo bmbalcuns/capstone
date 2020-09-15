@@ -12,7 +12,6 @@ Vue.component('drink', {
             <button v-if="user.id" @click="$emit('favorite', drink)">Favorite</button>
             <button v-if="user.id" @click="$emit('hide', drink)">Hide</button><br><br>
             <p v-if="!user.id">Please log in or create an account to favorite or hide drinks.</p><br><br>
-        <button v-if="loadMoreButton" @click="$emit('loadMore', page)">Load more...</button>
         </div>
         `
   })
@@ -62,6 +61,7 @@ let vm = new Vue({
         listDrinksByType: function () {
             let url = ''
             this.active = 'type'
+            this.activeSearch = this.searchType
             this.page = 1
             this.loadMoreButton = true
             if (this.searchType === "any") {
@@ -95,6 +95,7 @@ let vm = new Vue({
         listDrinksByTerm: function () {
             let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}`
             this.active = 'term'
+            this.activeSearch = this.searchTerm
             this.page = 1
             this.loadMoreButton = true
             axios({
@@ -162,22 +163,22 @@ let vm = new Vue({
             })
         },
         nextPage: function () {
-            // there is currently an error regarding loadMoreButton
-            if (this.active === "type") {
-                let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchType}&page=${this.page}`
-            } else {
-                let url = `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.searchTerm}&page=${this.page}`
-            }
             this.page ++
             axios({
                 headers: {
                     'X-CSRFToken': this.csrftoken,
                 },
                 method: "get",
-                url: url
+                url: `http://api-cocktails.herokuapp.com/api/v1/cocktails?ingredients[]=${this.activeSearch}&page=${this.page}`,
+                headers: {
+                    Authorization: "Token token=cKsRpxkhpu7FhLVzjQE3nAtt"
+                }
             }).then(response => {
                 console.log(response.data);
-                this.data = response.data;
+                if (response.data.length < 20) {
+                    this.loadMoreButton = false
+                }
+                this.drinks.push(...response.data)
             });
         },
     },

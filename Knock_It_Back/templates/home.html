@@ -4,44 +4,56 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Knock It Back Homepage HTML</title>
-        <link rel="stylesheet" href="/static/capstonestyle.css">
+        <link rel="stylesheet" href="/static/normalize.css">
+        <link rel="stylesheet" href="/static/skeleton.css">
     </head>
     <body>
-        <h1>Knock It Back</h1>
+        <section class="top">
+            <h1>Knock It Back</h1>
+        </section>
 
         {% csrf_token %}
         {% if user.is_authenticated %}
         <h3>Welcome back, {{ user.username }}!</h3>
-        <a href="{% url 'kib_app:home' %}">Homepage</a> 
-        <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
-        <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
-        <a href="{% url 'logout' %}">Log Out of Account</a>
+        <section class="nav">
+            <a href="{% url 'kib_app:home' %}">Homepage</a> 
+            <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
+            <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
+            <a href="{% url 'logout' %}">Log Out of Account</a>
+        </section>
         {% else %}
         <h3>Welcome, Guest!</h3>
-        <h4>You have limited access. For more results, please create an account or log in.</h4>
-        <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
-        <h4>Below is a randomized list of drinks. For more specific results, please enter search parameters (one search item at a time).</h4>
+        <p>You have limited access. For more results, please create an account or log in.</p>
+        <section class="sidenav">
+            <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
+        </section>
+        <p>Below is a randomized list of drinks. For more specific results, please enter search parameters (one search item at a time).</p>
         {% endif %}
         
         <div id="app">
-            <label for="searchType">Choose an alcohol type:</label>
-            <select name="searchType" id="searchType" v-model="searchType">
-                <option value="initial" disabled>select</option>
-                <option value="any">any</option>
-                <option value="beer">beer</option>
-                <option value="brandy">brandy</option>
-                <option value="gin">gin</option>
-                <option value="liqueur">liqueur</option>
-                <option value="rum">rum</option>
-                <option value="tequila">tequila</option>
-                <option value="vodka">vodka</option>
-                <option value="whiskey">whiskey</option>
-            </select>
-            <button @click="listDrinksByType">Get drink suggestions</button><br>
-            <label for="searchTerm">Search by ingredient:</label>
-            <input type="text" v-model="searchTerm" placeholder="type ingredient here"> 
-            <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
-            <div>
+            <section class="type">
+                <label for="searchType">Choose an alcohol type:</label>
+                <select name="searchType" id="searchType" v-model="searchType">
+                    <option value="initial" disabled>select</option>
+                    <option value="any">any</option>
+                    <option value="beer">beer</option>
+                    <option value="brandy">brandy</option>
+                    <option value="gin">gin</option>
+                    <option value="liqueur">liqueur</option>
+                    <option value="rum">rum</option>
+                    <option value="tequila">tequila</option>
+                    <option value="vodka">vodka</option>
+                    <option value="whiskey">whiskey</option>
+                </select>
+                <button @click="listDrinksByType">Get drink suggestions</button><br>
+            </section>
+            or
+            <section class="term">
+                <label for="searchTerm">Search by ingredient:</label>
+                <input type="text" v-model="searchTerm" placeholder="type ingredient here"> 
+                <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
+            </section>
+            <div class="drink">
                 <drink
                     :user="user"
                     v-for="drink in drinks"
@@ -51,10 +63,13 @@
                     @hide="hideDrink(drink)"
                 ></drink>
             </div>
-            <button @click="nextPage" v-if="loadMoreButton">Load more...</button>
+            <div class="load">
+                <button @click="nextPage" v-if="loadMoreButton">Load more...</button>
+            </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="/static/home.js"></script>
     </body>
+    <footer>Copyright &copy; 2020 Breanna Balcuns</footer>
 </html>
