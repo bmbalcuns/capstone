@@ -1,17 +1,17 @@
 Vue.component('drink', {
     props: ['drink'],
     template: `
-        <p>
-        <img :src="drink.image_thumb_url"><br>
-            {{ drink.name }}<br><br>
+        <div>
+        <img :src="drink.image_thumb_url"><br><br>
+            <h4>{{ drink.name }}</h4>
             Description: {{ drink.description }}<br><br>
             Ingredients:<br>
             <ul>
                 <li v-for="drink in drink.ingredients.split(',')">{{ drink }}</li>
             </ul>
             <button @click="$emit('favorite', drink)">Favorite</button>
-            <button @click="$emit('unhide', drink)">Unhide</button>
-        </p>
+            <button @click="$emit('unhide', drink)"Unhide</button><hr><br>
+        </div>
         `
   })
 

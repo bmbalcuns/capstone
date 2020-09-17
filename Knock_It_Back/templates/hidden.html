@@ -4,25 +4,29 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Knock It Back Hidden HTML</title>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/static/normalize.css">
         <link rel="stylesheet" href="/static/skeleton.css">
     </head>
     <body>
-        <h1>Knock It Back</h1>
+        <section class="top">
+            <h1>Knock It Back</h1>
+            <h4>discover your new drink of choice</h4>
+        </section>
+        <section class="nav">
+            <a href="{% url 'kib_app:home' %}">Homepage</a> 
+            <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
+            <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
+            <a href="{% url 'logout' %}">Log Out of Account</a>
+        </section>
+        <section class="title">
+            <h3>Hidden</h3>
+        </section>
+        <div id="app">
 
         {% csrf_token %}
-        {% if user.is_authenticated %}
-        <h3>{{ user.username }}, here are the drinks you don't want to see.</h3>
-        <a href="{% url 'kib_app:home' %}">Homepage</a> 
-        <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
-        <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
-        <a href="{% url 'logout' %}">Log Out of Account</a>
-        {% else %}
-        <h3>You must be a member in order to hide drinks. Please create an account or log in to see less of what you don't want!</h3>
-        <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
-        {% endif %}
-
-        <div id="app">
+        {% if user.hidden %}
+        <div class="drink">
             <drink
                 v-for="drink in user.hidden_info"
                 v-bind:drink="drink"
@@ -31,8 +35,14 @@
                 @unhide="unhideDrink"
             ></drink>
         </div>
+        {% else %}
+            <p class="nothing">You do not have any hidden drinks - add them to the list to make sure you don't see them in your drink suggestions!</p>
+        {% endif %}
+
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="/static/hidden.js"></script>
     </body>
+    <footer>Copyright &copy; 2020 Breanna Balcuns | Knock It Back</footer>
 </html>
