@@ -16,45 +16,50 @@
 
         {% csrf_token %}
         {% if user.is_authenticated %}
-        <h3>Welcome back, {{ user.username }}!</h3>
         <section class="nav">
             <a href="{% url 'kib_app:home' %}">Homepage</a> 
             <a href="{% url 'kib_app:favorites' %}">My Favorites</a> 
             <a href="{% url 'kib_app:hidden' %}">Hidden</a> 
             <a href="{% url 'logout' %}">Log Out of Account</a>
         </section>
+        <section class="welcome">
+            <h3>Welcome back, {{ user.username }}!</h3>
+            <h4>Take a look at the random assortment of drinks below, or enter a search parameter for more specific results.</h4><br><br>
+        </section>
         {% else %}
-        <h3>Welcome, Guest!</h3>
-        <h4>Take a look at the random assortment below, or enter a search parameter for more specific results.</h4>
-        <p>You currently have limited access. For more results, please create an account or log in.</p>
-        <section class="sidenav">
+        <section class="nav">
             <a href="{% url 'users:create' %}">Create Account</a> <a href="{% url 'login' %}">Member Login</a>
         </section>
-        <p>Below is a randomized list of drinks. For more specific results, please enter search parameters (one search item at a time).</p>
+        <section class="welcome">
+            <h3>Welcome, Guest!</h3>
+            <h4>Take a look at the random assortment of drinks below, or enter a search parameter for more specific results.</h4>
+            <p>You currently have limited access. Please create an account or log in for full access.</p><br><br>
+        </section>
         {% endif %}
         
         <div id="app">
-            <section class="type">
-                <label for="searchType">Choose an alcohol type:</label>
-                <select name="searchType" id="searchType" v-model="searchType">
-                    <option value="initial" disabled>select</option>
-                    <option value="any">any</option>
-                    <option value="beer">beer</option>
-                    <option value="brandy">brandy</option>
-                    <option value="gin">gin</option>
-                    <option value="liqueur">liqueur</option>
-                    <option value="rum">rum</option>
-                    <option value="tequila">tequila</option>
-                    <option value="vodka">vodka</option>
-                    <option value="whiskey">whiskey</option>
-                </select>
-                <button @click="listDrinksByType">Get drink suggestions</button><br>
-            </section>
-            or
-            <section class="term">
-                <label for="searchTerm">Search by ingredient:</label>
-                <input type="text" v-model="searchTerm" placeholder="type ingredient here"> 
-                <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
+            <section class="search">
+                <section class="type">
+                    <label for="searchType">Choose an alcohol type:</label>
+                    <select name="searchType" id="searchType" v-model="searchType">
+                        <option value="initial" disabled>select</option>
+                        <option value="any">any</option>
+                        <option value="beer">beer</option>
+                        <option value="brandy">brandy</option>
+                        <option value="gin">gin</option>
+                        <option value="liqueur">liqueur</option>
+                        <option value="rum">rum</option>
+                        <option value="tequila">tequila</option>
+                        <option value="vodka">vodka</option>
+                        <option value="whiskey">whiskey</option>
+                    </select>
+                    <button @click="listDrinksByType">Get drink suggestions</button><br>
+                </section>
+                <section class="term">
+                    <label for="searchTerm">Search by ingredient:</label>
+                    <input type="text" v-model="searchTerm" placeholder="type ingredient here"> 
+                    <button @click="listDrinksByTerm">Get drink suggestions</button><br><br><br>
+                </section>
             </section>
             <div class="drink">
                 <drink
@@ -67,12 +72,12 @@
                 ></drink>
             </div>
             <div class="load">
-                <button @click="nextPage" v-if="loadMoreButton">Load more...</button>
+                <button @click="nextPage" v-if="loadMoreButton">Load more</button>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="/static/home.js"></script>
     </body>
-    <footer>Copyright &copy; 2020 Breanna Balcuns</footer>
+    <footer>Copyright &copy; 2020 Breanna Balcuns | Knock It Back</footer>
 </html>

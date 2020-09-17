@@ -128,8 +128,7 @@ body {
   background: #222;
   color: rgb(199, 198, 198); }
 .top {
-  /* padding-top: 75px; */
-  height: 55em;
+  height: 50em;
   width: 100%;
   background-image: url(/static/Signature-Cocktails-at-Macaus-Heart-Bar.jpg);
   background-size: 100% 800px;
@@ -142,12 +141,63 @@ body {
   font-size: 120px;
   font-family: 'Great Vibes', cursive;
 }
-
 .top h4 {
   text-align: center;
   color: #f7f7f763;
   font-size: 38px;
   font-family: 'Great Vibes', cursive;
+}
+.nav {
+  padding-bottom: 15px;
+  width: 100%;
+  background-color: #000000;
+  text-align: center;
+}
+.nav a {
+  padding: 15px;
+  text-decoration: none;
+}
+.nav a:hover {
+  background-color: #f7f7f763;
+}
+.welcome {
+  padding-top: 55px;
+  text-align: center;
+}
+.welcome h3 {
+  font-size: 62px;
+}
+#app .search {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+#app .search .type, #app .search .term {
+  padding: 10px;
+}
+.drink {
+  padding: 105px;
+  padding-bottom: 0px;
+  text-align: center;
+  background-image: linear-gradient( #000000, #222);
+}
+.drink > div {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.drink hr {
+  border: 1px solid #353535;
+}
+.load {
+  width: auto;
+  text-align: center;
+}
+footer {
+  padding: 25px;
+  width: 100%;
+  background-color: #000000;
+  text-align: center;
 }
 
 
@@ -182,9 +232,9 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #9b0101; }
+  color: #f7f7f7e7; }
 a:hover {
-  color: #9b0101; }
+  color: #f7f7f7e7; }
 
 
 /* Buttons

@@ -2,16 +2,15 @@ Vue.component('drink', {
     props: ['drink', 'user'],
     template: `
         <div>
-        <img :src="drink.image_thumb_url"><br>
-            {{ drink.name }}<br><br>
+        <img :src="drink.image_thumb_url"><br><br>
+            <h4>{{ drink.name }}</h4>
             Description: {{ drink.description }}<br><br>
             Ingredients:<br>
             <ul>
                 <li v-for="drink in drink.ingredients">{{ drink }}</li>
             </ul>
             <button v-if="user.id" @click="$emit('favorite', drink)">Favorite</button>
-            <button v-if="user.id" @click="$emit('hide', drink)">Hide</button><br><br>
-            <p v-if="!user.id">Please log in or create an account to favorite or hide drinks.</p><br><br>
+            <button v-if="user.id" @click="$emit('hide', drink)">Hide</button><hr><br><br>
         </div>
         `
   })
@@ -53,7 +52,7 @@ let vm = new Vue({
                     return true
                 })
             }else {
-                this.drinks = response.data
+                this.drinks = response.data;
             }
         });
     },
@@ -77,6 +76,7 @@ let vm = new Vue({
                 }
             }).then(response => {
                 if (this.user.id) {
+                    this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
                         this.user.hidden_info.forEach(hidden => {
                             if (hidden.name === drink.name) {
@@ -87,6 +87,7 @@ let vm = new Vue({
                     })
                 }else {
                     this.drinks = response.data.slice(0, 10)
+                    this.loadMoreButton = false
                 }
             });
             this.searchType = 'initial';
@@ -107,6 +108,7 @@ let vm = new Vue({
             }).then(response => {
                 console.log(response.data);
                 if (this.user.id) {
+                    this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
                         this.user.hidden_info.forEach(hidden => {
                             if (hidden.name === drink.name) {
@@ -117,6 +119,7 @@ let vm = new Vue({
                     })
                 }else {
                     this.drinks = response.data.slice(0, 10)
+                    this.loadMoreButton = false
                 }
             });
             this.searchType = 'initial';
