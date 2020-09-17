@@ -10,7 +10,7 @@ Vue.component('drink', {
                 <li v-for="drink in drink.ingredients.split(',')">{{ drink }}</li>
             </ul>
             <button @click="$emit('favorite', drink)">Favorite</button>
-            <button @click="$emit('unhide', drink)"Unhide</button><hr><br>
+            <button @click="$emit('unhide', drink)">Unhide</button><hr><br>
         </div>
         `
   })

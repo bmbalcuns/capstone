@@ -179,7 +179,6 @@ body {
   padding: 10px;
 }
 .drink {
-  padding: 75px;
   padding-bottom: 0px;
   text-align: center;
   background-image: linear-gradient( #000000, #222);
@@ -188,6 +187,10 @@ body {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 45px;
+}
+.drink h3 {
+  font-size: 62px;
 }
 .drink hr {
   margin-top: 20px;
@@ -212,11 +215,12 @@ body {
 .title {
   background-color: #000000;
   padding-top: 55px;
+  padding-bottom: 20px;
   text-align: center;
 }
 .title h3 {
   margin: 0px;
-  font-size: 68px;
+  font-size: 72px;
 }
 footer {
   padding: 25px;
