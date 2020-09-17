@@ -38,22 +38,22 @@ let vm = new Vue({
             axios({
                 method: "get",
                 url: '/api/v1/user/'
-            }).then(response => {
-                console.log(response.data);
-                this.user = response.data
+            }).then(response_user => {
+                this.user = response_user.data
+                if (this.user.id) {
+                    this.drinks = response.data.filter(drink => {
+                        this.user.hidden_info.forEach(hidden => {
+                            console.log(drink, hidden, hidden.name === drink.name)
+                            if (hidden.name === drink.name) {
+                                return false
+                            }
+                        });
+                        return true
+                    })
+                }else {
+                    this.drinks = response.data;
+                }
             })
-            if (this.user.id) {
-                this.drinks = response.data.filter(drink => {
-                    this.user.hidden_info.forEach(hidden => {
-                        if (hidden.name === drink.name) {
-                            return false
-                        }
-                    });
-                    return true
-                })
-            }else {
-                this.drinks = response.data;
-            }
         });
     },
     methods: {
@@ -79,6 +79,7 @@ let vm = new Vue({
                     this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
                         this.user.hidden_info.forEach(hidden => {
+                            console.log(drink, hidden, hidden.name === drink.name)
                             if (hidden.name === drink.name) {
                                 return false
                             }
@@ -111,6 +112,7 @@ let vm = new Vue({
                     this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
                         this.user.hidden_info.forEach(hidden => {
+                            console.log(drink, hidden, hidden.name === drink.name)
                             if (hidden.name === drink.name) {
                                 return false
                             }
