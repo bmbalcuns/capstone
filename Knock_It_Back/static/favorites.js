@@ -18,7 +18,7 @@ Vue.component('drink', {
 let vm = new Vue({
     el: '#app',
     data: {
-        user: '',
+        user: {favorites_info:[]},
         csrftoken: ''
     },
     created: function () {

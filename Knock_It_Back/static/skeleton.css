@@ -223,6 +223,11 @@ body {
   margin: 0px;
   font-size: 72px;
 }
+.nothing {
+  margin: 0px;
+  padding-bottom: 25px;
+  background-color: #000000;
+}
 footer {
   padding: 25px;
   background-color: #000000;

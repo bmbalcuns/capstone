@@ -25,8 +25,7 @@
         <div id="app">
 
         {% csrf_token %}
-        {% if user.hidden %}
-        <div class="drink">
+        <div v-if="user.hidden_info.length" class="drink">
             <drink
                 v-for="drink in user.hidden_info"
                 v-bind:drink="drink"
@@ -35,9 +34,7 @@
                 @unhide="unhideDrink"
             ></drink>
         </div>
-        {% else %}
-            <p class="nothing">You do not have any hidden drinks - add them to the list to make sure you don't see them in your drink suggestions!</p>
-        {% endif %}
+        <p v-else class="nothing">You do not have any hidden drinks - add some to the list to make sure you don't see them in your suggestions!</p>
 
         </div>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

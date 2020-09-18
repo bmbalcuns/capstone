@@ -78,12 +78,16 @@ let vm = new Vue({
                 if (this.user.id) {
                     this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
+                        let match = false
                         this.user.hidden_info.forEach(hidden => {
                             console.log(drink, hidden, hidden.name === drink.name)
                             if (hidden.name === drink.name) {
-                                return false
+                                match = true
                             }
                         });
+                        if (match) {
+                            return false
+                        }
                         return true
                     })
                 }else {
@@ -107,16 +111,19 @@ let vm = new Vue({
                     Authorization: "Token token=cKsRpxkhpu7FhLVzjQE3nAtt"
                 }
             }).then(response => {
-                console.log(response.data);
                 if (this.user.id) {
                     this.loadMoreButton = true;
                     this.drinks = response.data.filter(drink => {
+                        let match = false
                         this.user.hidden_info.forEach(hidden => {
                             console.log(drink, hidden, hidden.name === drink.name)
                             if (hidden.name === drink.name) {
-                                return false
+                                match = true
                             }
                         });
+                        if (match) {
+                            return false
+                        }
                         return true
                     })
                 }else {
